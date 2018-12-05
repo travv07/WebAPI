@@ -1,0 +1,103 @@
+<% provide(:title, "") %>
+	<!-- header -->
+	<%= render 'layouts/header' %>
+	<!-- carousel -->
+	
+	<div id="demo" class="carousel slide" data-ride="carousel">
+		<ul class="carousel-indicators">
+		  <li data-target="#demo" data-slide-to="0" class="active"></li>
+		  <li data-target="#demo" data-slide-to="1"></li>
+		  <li data-target="#demo" data-slide-to="2"></li>
+		</ul>
+		<div class="carousel-inner">
+		  <div class="carousel-item active">
+		  	<%= image_tag("thoitrang.jpg", :alt => "Fashion" ) %>
+		  </div>
+		  <div class="carousel-item">
+		  	<%= image_tag("thoitrang.jpg", :alt => "Fashion" ) %>
+		  </div>
+		  <div class="carousel-item">
+		   	<%= image_tag("thoitrang.jpg", :alt => "Fashion" ) %>
+		  </div>
+		</div>
+	</div>
+	<!-- content -->
+	<div class="content">
+		<div class="category">
+			<div class="ct-left">
+				<div class="ct-left1">
+					<%= image_tag("thoitrangnu.jpg", :alt => "Woman" , :class => "category1" ) %>
+				</div>	
+			</div>
+			<div class="ct-right">
+				<div class="ct-right1">
+					<%= image_tag("thoitrangnam.jpg", :alt => "Man" , :class => "category1" ) %>
+				</div>
+			</div>
+		</div>	
+		<div class="content3">
+			<div class="ct-title2">
+					<h1>Không Thể Bỏ Qua</h1>	
+			</div>
+		</div>
+		<br>
+		<div class="sanpham"> 
+			<div class="khungsanpham"> 
+				<div class="row-sanpham"> 
+					<a href=""> 
+						<div class="anhsanpham"> 
+							<a href=""><%= image_tag("thoitrangnam.jpg", :alt => "Man" ) %></a>
+						</div> 
+						<div class="tensanpham"> 
+							<p>qweqw</p> 
+						</div> 
+						<div class="giasanpham"> 
+							<p>123</p> 
+						</div> 
+						<div class="btmua"> 
+							<button  type="submit" name="login" class="btn btn-default button-login" ten="<?php echo $row['id_product'] ?>">Mua</button>
+						</div> 
+					</a> 
+				</div> 
+			</div>
+		</div>	
+	</div>
+
+																																																																																																																																																																																																																																																																																													
+	<div class="clearfix"></div>
+	<div class="footer">
+		<div class="footerleft">
+			<div class="footer1">
+				<a href=""><h3>Shop Clothes</h3></a>
+				<a href=""><p>Giới thiệu Shop</p></a>
+				<a href=""><p>Quy Chế</p></a>
+				<a href=""><p>Bảo Hành</p></a>
+			</div>
+		</div>
+		<div class="footercenter">
+			<div class="footer2">
+				<a href=""><h3>Công Ty TNHH 1 Thành Viên </h3></a>
+				<p>SDT:0111111111</p>
+				<p>Diachi:LOL</p>
+				<a href="#"><%= image_tag("iconfb.png", :alt => "Man" ) %></a>
+				<a href="#"><%= image_tag("iconzalo.png", :alt => "Man" ) %></a>
+			</div>
+		</div>
+		<div class="footerright">
+			
+		</div>
+	</div>	
+	<script type="text/javascript">
+	  $.ajax({
+	    url: 'http://localhost:3000/v1/products',
+	    type: 'GET',
+	    dataType: 'json',
+	    success: function(data){
+	      $(data).each(function(index, el) {
+	        console.log(el);
+	      });
+	    }
+	  });
+	</script>
+</body>
+</html>
