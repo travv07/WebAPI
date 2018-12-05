@@ -24,8 +24,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap' 
 gem 'jquery-rails'
-gem 'versionist'
-gem "active_model_serializers", "~> 0.10.0"
+gem 'versionist' #generate api
+gem "active_model_serializers", "~> 0.10.0" # customize object
+gem 'kaminari' #phan trang
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

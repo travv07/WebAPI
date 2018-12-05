@@ -1,7 +1,9 @@
 class V1::ProductsController < V1::BaseController
 	before_action :find_id, only: [:show,:edit,:destroy]
 	def index
-		@products = Product.all
+		page = params[:page]
+		per = params[:per]
+		@products = Product.page(page).per(per)
 		data = ActiveModel::Serializer::CollectionSerializer.new(@products, each_serializer: ProductSerializer)
 		success_response data, "asdasd" 
 		# json_reponse @products
