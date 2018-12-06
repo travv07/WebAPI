@@ -9,7 +9,7 @@ class V1::ProductsController < V1::BaseController
 		# json_reponse @products
 	end
 	def show
-		json_reponse @product
+		success_response @product, "asdasd" 	
 	end
 	def new
 		
@@ -17,25 +17,28 @@ class V1::ProductsController < V1::BaseController
 	def create
 	    @product = Product.new product_params
 	    if @product.save
-	      json_reponse(@product,status: :created)
+		  	success_response @product, "created"
+			else
+				error_response "not created"
 	    end
 	end
 
 	def edit
-	    json_reponse @product
+	    
+		success_response @product, "asdasd" 
 	end
 	def update
 	    if @product.update product_params
-	      json_reponse @product
+	      success_response @product, "updated"
 	    else
-	      error_response
+	      error_response "not updated"
 	    end
 	end
 	def destroy
 	    if @product.destroy
-	      json_reponse(message: 'Deleted',status: :ok)
+	      success_response @product, "deleted"
 	    else
-	      error_response
+	      error_response "not updated"
 	    end
 	end
 	def product_params

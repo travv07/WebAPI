@@ -6,4 +6,8 @@ class ProductSerializer < ActiveModel::Serializer
   def updated_at
   	object.updated_at.to_i
   end
+
+  def image
+  	object.try(:image)&.url
+  end
 end

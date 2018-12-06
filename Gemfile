@@ -27,6 +27,8 @@ gem 'jquery-rails'
 gem 'versionist' #generate api
 gem "active_model_serializers", "~> 0.10.0" # customize object
 gem 'kaminari' #phan trang
+gem "carrierwave"
+gem "js-routes"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
