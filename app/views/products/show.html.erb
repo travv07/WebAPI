@@ -1,16 +1,98 @@
-<h1>Products#show</h1>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=220379985135243';
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+	<!-- header -->
+	<%= render "layouts/header"%>
+	<!-- conntent -->
+	<div class="page-product-detail">
+		<div class="crumb">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+			    	<li class="breadcrumb-item"><%= link_to "HOme", root_path %></li>
+			    	<li class="breadcrumb-item active valuename" aria-current="page" >name</li>
+			  	</ol>
+			</nav>
+		</div>
+		<div class="view-product">
+			<div class="view-product-left">
+				<%= image_tag("iconshop.png", :alt => "Fashion", :class => "valueimage" ) %>
+			</div>
+			<div class="view-product-right">
+				<div class="view-info-product">
+					<h1 class="valuename"> name</h1>
+					<h1 class="valueprice"> price</h1>
+					<h3 class="valuedes"> des</h3>
+					<div class="form-group2">        
+					   	<button type="submit" class="btn btn-default btn-buy">Buy</button>
+					</div>
+				</div>
+				<div class="cmt">
+					<div class="fb-comments" data-href="http://localhost/Wedshop/index/product-detail.php" data-numposts="8"></div>
+				</div>
+			</div>
+		</div>
+		</div>	
+	</div>
+	<?php } ?>
+	<!-- footer -->
+	<div class="footer-user">
+		<div class="footerleft">
+			<div class="footer1">
+				<a href=""><h3>Shop Clothes</h3></a>
+				<a href=""><p>Review shop</p></a>
+				<a href=""><p>About</p></a>
+				<a href=""><p>Infor</p></a>
+			</div>
+		</div>
+		<div class="footercenter">
+			<div class="footer2">
+				<a href=""><h3>Công Ty TNHH 1 Thành Viên </h3></a>
+				<p>SDT:0111111111</p>
+				<p>Diachi:LOL</p>
+				<a href="#"><%= image_tag("iconfb.png", :alt => "Man" ) %></a>
+				<a href="#"><%= image_tag("iconzalo.png", :alt => "Man" ) %></a>
+			</div>
+		</div>
+		<div class="footerright">
+			
+		</div>
+	</div>
 
 <script type="text/javascript">
 	var url = window.location.pathname;
 	var id = url.substring(url.lastIndexOf('/') + 1);
-	alert(id);
 	  $.ajax({
 	    url: Routes.v1_product_path(id),
 	    type: 'GET',
 	    dataType: 'json',
 	    success: function(data){
 	      $(data).each(function(index, el) {
-	        console.log(el);
+	      	var id =el['data'].id;
+	      	var name = el['data'].name;
+	      	var des = el['data'].description;
+	      	var image = el['data'].image.url;
+	      	var price = el['data'].price;
+
+	      	var valuename = $('.valuename');
+	      	valuename.html(name);
+
+	      	var valueprice = $('.valueprice');
+	      	valueprice.html(price);
+
+	      	var valuedes = $('.valuedes');
+	      	valuedes.html(des);
+
+	      	// var valueimage = $('.valueimage');
+	      	// valueimage.attr({
+	      	// 	'src': image,
+	      	// 	'alt': "asd"
+	      	// })
+	        console.log(el['data'].image.url)
 	      });
 	    }
 	  });

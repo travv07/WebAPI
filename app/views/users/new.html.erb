@@ -1,0 +1,59 @@
+
+	<h2>Sign up</h2>
+	<div class="row1">
+		<div class="khungrow">
+			<%= form_for @user do |form| %>
+		    <div class="form-group1">
+	      	<div class="row-left">
+	      		<%= form.label "Full name" %>
+	      	</div>
+	      	<div class="row-right">
+	      	  <%= form.text_field :name, class: 'form-control', placeholder: 'Full name' %>
+	      	</div>
+		    </div>
+		    <div class="form-group1">
+			    <div class="row-left">
+			   		<%= form.label "Address" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :address, class: 'form-control', placeholder: 'address' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+			    <div class="row-left">
+			   		<%= form.label "Email" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :email, class: 'form-control', placeholder: 'email@mail.com' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+			   		<%= form.label "Numberphone" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :numberphone, class: 'form-control', placeholder: 'numberphone' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+			   		<%= form.label "Password" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.password_field :password, class: 'form-control', placeholder: '*******' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+		    		<%= form.label "Password_Confirmation" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.password_field :password_confirmation, class: 'form-control', placeholder: '*******' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1"> 
+		     <%= form.submit "Create", class: 'btn btn-default btn-regis' %>       
+				</div>
+			<% end %>
+		</div>
+	</div>

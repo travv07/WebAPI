@@ -1,0 +1,24 @@
+
+	<h2 class="title-login">Sign in</h2>
+	<div class="row-login">
+		<div class="khungrow-login">
+			<%= form_for :session, url: login_path do |form| %>
+				<div class="form-group-login">
+					<div class="input-group-login">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					    <%= form.text_field :email, class: 'form-control', placeholder: 'email@gmail.com' %>
+				    </div>
+				</div>
+			    <div class="form-group-login">
+			    	<div class="input-group-login">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>	
+					    <%= form.password_field :password, class: 'form-control', placeholder: '****' %>
+					</div>
+			    </div>
+				<div class="form-group-login1">  
+					<%= form.submit "Login", class: 'btn btn-default btn-login' %>  
+					<%= link_to "create a account", new_user_path %>      
+				</div>
+			<%end%>
+		</div>
+	</div>

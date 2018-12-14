@@ -1,0 +1,96 @@
+
+
+
+<!-- header -->
+<%= render 'layouts/header' %>
+<!-- user-info -->
+<%  %>
+<div class="page-connter">
+	<div class="page-user-info">
+		<div class="container-left">
+			<div class="user">
+
+				<div class="user-img">
+					<a href="#"><%= image_tag("iconfb.png", :alt => "Man" ) %></a>
+				</div>
+				<div class="user-name">
+					<p><%= session[:user]['name']%></p>
+				</div>	
+			</div>	
+			<div class="clearfix"></div>
+			<div class="side-bar-menu">
+				<ul>
+					<li><a href="user-profile.php">Infor</a></li>
+					<li><a href="#" id="edit-infor">Update infor</a></li>
+					<li><a href="">Bill</a></li>
+					<li><a href="">Adress</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container-right">
+			<div class="user-info">
+				<div class="user-info-label">
+					<h2>Infor user</h2>
+				</div>
+				<div class="user-info-list">
+					<div class="khungrow">
+						    <div class="form-group2">
+						      	<div class="row-left">
+						      		<label for="name">Name</label>
+						      	</div>
+						      	<div class="row-right">
+						      		<p><%= session[:user]['name']%></p>
+						      	</div>
+						    </div>
+						    <div class="form-group2">
+							    <div class="row-left">
+							   		<label for="email">Email</label>
+							   	</div>
+						      	<p><%= session[:user]['email']%></p>
+						    </div>
+						    <div class="form-group2">
+						    	<div class="row-left">
+							   		<label for="address">Address</label>
+							   	</div>
+						      	<div class="row-right">
+						      		<p><%= session[:user]['address']%></p>
+						      	</div>
+						    </div>
+						    <div class="form-group2">
+						    	<div class="row-left">
+							   		<label for="avatar">Avatar</label>
+							   	</div>
+							   	<div class="row-right">
+						      		<%= image_tag("iconfb.png", :alt => "Man" ) %>
+						      	</div>
+						    	
+						    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- footer -->
+<div class="footer-user">
+	<div class="footerleft">
+		<div class="footer1">
+			<a href=""><h3>Shop Clothes</h3></a>
+			<a href=""><p>Giới thiệu Shop</p></a>
+			<a href=""><p>Quy Chế</p></a>
+			<a href=""><p>Bảo Hành</p></a>
+		</div>
+	</div>
+	<div class="footercenter">
+		<div class="footer2">
+			<a href=""><h3>Công Ty TNHH 1 Thành Viên </h3></a>
+			<p>SDT:0111111111</p>
+			<p>Diachi:LOL</p>
+			<a href="#"><%= image_tag("iconfb.png", :alt => "Man" ) %></a>
+			<a href="#"><%= image_tag("iconzalo.png", :alt => "Man" ) %></a>
+		</div>
+	</div>
+	<div class="footerright">
+		
+	</div>
+</div>

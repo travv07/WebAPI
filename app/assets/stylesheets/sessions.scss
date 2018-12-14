@@ -1,0 +1,32 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+.title-login{
+	text-align: center;
+}
+.row-login{
+	width: 100%;
+}
+.khungrow-login{
+	width: 60%;
+	margin: 50px auto;
+	min-height: 300px
+}
+.form-group-login {
+    width: 50%;
+    margin: 20px auto;
+}
+.form-group-login1 {
+    width: 50%;
+    margin: 0px auto;
+}
+.form-group-login a {
+	float: right;
+}
+.btn-login {
+    width: 50%;
+}
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
