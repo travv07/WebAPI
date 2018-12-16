@@ -24,29 +24,79 @@
             <table class="table">
                 <thead>
                     <tr>
-                            <th scope="col"></th>
-                            <th scope="col">name</th>
-                            <th scope="col">address</th>
-                            <th scope="col">email_address</th>
-                            <th scope="col">rule</th>
-                            <th scope="col">numberphone</th>
-                            <th colspan="2"></th>
+                      <th scope="col"></th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Address</th>
+                      <th scope="col">Email_Address</th>
+                      <th scope="col">Numberphone</th>
+                      <th scope="col">Avatar</th>
+                      <!-- <th colspan="2"></th> -->
                     </tr>
                 </thead>
-                <tbody>
-                <tr>
-                        <th scope="row"><?php echo $i ?></th>
-                        <td><?php echo $row['name'] ?></td>
-                        <td><?php echo $row['address'] ?></td>
-                        <td><?php echo $row['email_address'] ?></td>
-                        <td><?php echo $row['password'] ?></td>
-                        <td><?php echo $row['rule'] ?></td>
-                        <td></td>
-                    <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                    <td><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                </tr>
+                <tbody class="trElment">
+
+                 <!--  <tr >
+                      <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                      <td><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                  </tr> -->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $.ajax({
+        url: Routes.v1_users_path(),
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            $(data).each(function(index,el){
+              var x = 0,name,address,email_address,numberphone;
+              for (var i in el['data']){
+                x++;
+                name = el['data'][i].name;
+                address = el['data'][i].address;
+                email_address = el['data'][i].email;
+                numberphone = el['data'][i].numberphone;
+                image = el['data'][i].image;
+    
+                var tdNameElement = $('<td></td>');
+                tdNameElement.html(name);
+
+                var tdAddressElement = $('<td></td>');
+                tdAddressElement.html(address);
+
+                var tdEmailElement = $('<td></td>');
+                tdEmailElement.html(email_address);
+
+                var tdNumberElement = $('<td></td>');
+                tdNumberElement.html(numberphone);
+
+                var tdxElement = $('<td></td>');
+                tdxElement.html(x);
+
+                var tdImageElement = $('<td></td>');
+                var imagex = $('<img style="width:50px;">')
+                imagex.attr({
+                  'src':image
+                })
+                tdImageElement.append(imagex);
+                var trElment = $('<tr></tr>');
+                trElment.append(tdxElement);
+                trElment.append(tdNameElement);
+                trElment.append(tdAddressElement);
+                trElment.append(tdEmailElement);
+                trElment.append(tdNumberElement);
+                trElment.append(tdImageElement);
+
+
+                var tx = $('.trElment');
+                tx.append(trElment);
+                console.log(el)
+              }
+              
+
+            });
+        }
+    }); 
+</script>
