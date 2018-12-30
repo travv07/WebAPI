@@ -21,6 +21,14 @@
             </ul>
         </div>
         <div class="content-admin-right">
+             <div class="crumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><%= link_to "Dashboard", admins_path %></li>
+                        <li class="breadcrumb-item active valuename" aria-current="page" >List Products</li>
+                    </ol>
+                </nav>
+             </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -31,16 +39,14 @@
                             <th scope="col">price</th>
                             <th scope="col">quality</th>
                             <th scope="col">image</th>
+                            <th colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody class="trElment">
 
-                 <!--  <tr >
-                      <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                      <td><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                  </tr> -->
                 </tbody>
             </table>
+            <button class="btn insert-product"> Insert Product </button>
         </div>
     </div>
 </div>
@@ -54,6 +60,7 @@
             $(data).each(function(index,el){
                 for (var i in el['data']){
                 x++;
+                id = el['data'][i].id;
                 name = el['data'][i].name;
                 description = el['data'][i].description;
                 category = el['data'][i].category;
@@ -87,6 +94,21 @@
                 var tdxElement = $('<td></td>');
                 tdxElement.html(x);
 
+                var tdUpdateElement = $('<td></td>');
+                var iconUpdate = $('<i class="fa fa-pencil-square-o update-product" aria-hidden="true"></i>');
+                iconUpdate.attr({
+                  'ten': id
+                });
+                tdUpdateElement.append(iconUpdate);
+
+                var tdDeleteElement = $('<td></td>');
+
+                var iconDelete = $('<i class="fa fa-trash-o delete-product" aria-hidden="true"></i>');
+                iconDelete.attr({
+                  'ten': id
+                })
+                tdDeleteElement.append(iconDelete);
+
                 var trElment = $('<tr></tr>');
                 trElment.append(tdxElement);
                 trElment.append(tdNameElement);
@@ -95,6 +117,8 @@
                 trElment.append(tdPriceElement);
                 trElment.append(tdQuaElement);
                 trElment.append(tdImageElement);
+                trElment.append(tdUpdateElement);
+                trElment.append(tdDeleteElement);
 
                 var tx = $('.trElment');
                 tx.append(trElment);
@@ -103,4 +127,18 @@
           });
         }
     });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.update-product').click(function(){
+            var id = $(this).attr('ten');
+            window.location.href = Routes.edit_product_path(id);
+        });
+        $('.insert-product').click(function(){
+            window.location.href = Routes.new_product_path(id);
+        });
+        $('.delete-product').click(function(){
+            window.location.href =Routes.product_path();
+        })
+    })
 </script>

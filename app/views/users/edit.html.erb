@@ -1,2 +1,67 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+	<h2>Update User</h2>
+	<div class="row1">
+		<div class="khungrow">
+			<%= form_for @user do |form| %>
+		    <div class="form-group1">
+	      	<div class="row-left">
+	      		<%= form.label "Full name" %>
+	      	</div>
+	      	<div class="row-right">
+	      	  <%= form.text_field :name, class: 'form-control'%>
+	      	</div>
+		    </div>
+		    <div class="form-group1">
+			    <div class="row-left">
+			   		<%= form.label "Address" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :address, class: 'form-control' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+			    <div class="row-left">
+			   		<%= form.label "Email" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :email, class: 'form-control' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+			   		<%= form.label "Numberphone" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :numberphone, class: 'form-control' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+			   		<%= form.label "Password" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.password_field :password, class: 'form-control', placeholder: '*******' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+		    		<%= form.label "Password_Confirmation" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.password_field :password_confirmation, class: 'form-control', placeholder: '*******' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1">
+		    	<div class="row-left">
+		    		<%= form.label "Role" %>
+			   	</div>
+		      	<div class="row-right">
+		      		<%= form.text_field :role, class: 'form-control' %>
+		      	</div>
+		    </div>
+		    <div class="form-group1"> 
+		     <%= form.submit "Update", class: 'btn btn-default btn-regis' %>       
+				</div>
+			<% end %>
+		</div>
+	</div>

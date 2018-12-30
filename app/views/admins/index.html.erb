@@ -2,18 +2,20 @@
 <div class="header-admin">
     <div class="header-admin-1">
         <div class="title-admin">
-            <h3>Admin Page Shop Clothes</h3>
+            <h3><%= link_to "Shop Clothes",root_path  %></h3>
         </div>
-        <div class="account">
-            <img src="iconshop.png" alt="" width="50px" height="50px">
-        </div>  
+        <% if session[:user].present? %>
+            <div class="dropdown">
+                <%= image_tag( "tra.jpg", :alt => "icon", :class => " avt-admin" ) %>
+            </div>
+        <% end %>
     </div>
 </div>
 <div class="content-admin">
     <div class="content-admin-1">
         <div class="content-admin-left">
             <ul class="menu-admin">
-                <li><%= link_to "Home",admins_path  %></li>
+                <li><%= link_to "Dashboard",admins_path  %></li>
                 <li><%= link_to "User", users_admin_path  %></li>
                 <li><%= link_to "Product", products_admin_path  %></li>
                 <li><a href="#">Link</a></li>
@@ -21,6 +23,73 @@
             </ul>
         </div>
         <div class="content-admin-right">
+            <div class="crumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><%= link_to "Dashboard", admins_path %></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="view">
+                <div class="view-total">
+                    <div class="show-total">
+                        <div class="total-user">
+                        </div>
+                    </div>
+                    <button class="btn bt-user">View-User</button>
+                </div>
+                <div class="view-total product-right">
+                    <div class="show-total">
+                        <div class="total-product">
+                        </div>
+                    </div>
+                    <button class="btn bt-product">View-Product</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $.ajax({
+        url: Routes.v1_products_path(),
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            var x =0;
+            $(data).each(function(index,el){
+                for(var i in el['data']){
+                    x++;
+                }
+                console.log(x);
+                var totalproduct = $('.total-product');
+                totalproduct.append(x+' Products');
+            })
+        }
+
+    })
+    $.ajax({
+        url: Routes.v1_users_path(),
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            var x =0;
+            $(data).each(function(index,el){
+                for(var i in el['data']){
+                    x++;
+                }
+                console.log(x);
+                var totalproduct = $('.total-user');
+                totalproduct.append(x+' Users');
+            })
+        }
+
+    })
+    $(document).ready(function(){
+        $('.bt-user').click(function(){
+            window.location.href = Routes.users_admin_path();
+        });
+        $('.bt-product').click(function(){
+            window.location.href =Routes.products_admin_path();
+        });
+    });
+</script>

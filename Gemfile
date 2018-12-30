@@ -30,6 +30,7 @@ gem 'kaminari' #phan trang
 gem "carrierwave"
 gem "js-routes"
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+gem "font-awesome-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

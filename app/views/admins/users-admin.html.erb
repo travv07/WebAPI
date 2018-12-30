@@ -21,6 +21,14 @@
             </ul>
         </div>
         <div class="content-admin-right">
+            <div class="crumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><%= link_to "Dashboard", admins_path %></li>
+                        <li class="breadcrumb-item active valuename" aria-current="page" >List Users</li>
+                    </ol>
+                </nav>
+             </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -29,18 +37,16 @@
                       <th scope="col">Address</th>
                       <th scope="col">Email_Address</th>
                       <th scope="col">Numberphone</th>
+                      <th scope="col">Role</th>
                       <th scope="col">Avatar</th>
-                      <!-- <th colspan="2"></th> -->
+                      <th colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody class="trElment">
 
-                 <!--  <tr >
-                      <td><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                      <td><a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                  </tr> -->
                 </tbody>
             </table>
+            <button class="btn insert-user"> Insert User </button>
         </div>
     </div>
 </div>
@@ -54,10 +60,12 @@
               var x = 0,name,address,email_address,numberphone;
               for (var i in el['data']){
                 x++;
+                id = el['data'][i].id;
                 name = el['data'][i].name;
                 address = el['data'][i].address;
                 email_address = el['data'][i].email;
                 numberphone = el['data'][i].numberphone;
+                role = el['data'][i].role;
                 image = el['data'][i].image;
     
                 var tdNameElement = $('<td></td>');
@@ -72,6 +80,9 @@
                 var tdNumberElement = $('<td></td>');
                 tdNumberElement.html(numberphone);
 
+                var tdRoleElement = $('<td></td>');
+                tdRoleElement.html(role);
+
                 var tdxElement = $('<td></td>');
                 tdxElement.html(x);
 
@@ -80,6 +91,21 @@
                 imagex.attr({
                   'src':image
                 })
+
+                var tdUpdateElement = $('<td></td>');
+                var iconUpdate = $('<i class="fa fa-pencil-square-o update-user" aria-hidden="true"></i>');
+                iconUpdate.attr({
+                  'ten': id
+                });
+                tdUpdateElement.append(iconUpdate);
+
+                var tdDeleteElement = $('<td></td>');
+                var iconDelete = $('<i class="fa fa-trash-o delete-user" aria-hidden="true"></i>');
+                iconDelete.attr({
+                  'ten': id
+                })
+                tdDeleteElement.append(iconDelete);
+
                 tdImageElement.append(imagex);
                 var trElment = $('<tr></tr>');
                 trElment.append(tdxElement);
@@ -87,16 +113,32 @@
                 trElment.append(tdAddressElement);
                 trElment.append(tdEmailElement);
                 trElment.append(tdNumberElement);
+                trElment.append(tdRoleElement);
                 trElment.append(tdImageElement);
-
+                trElment.append(tdUpdateElement);
+                trElment.append(tdDeleteElement);
 
                 var tx = $('.trElment');
                 tx.append(trElment);
-                console.log(el)
+                console.log(role)
               }
               
 
             });
         }
     }); 
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.update-user').click(function(){
+            var id = $(this).attr('ten');
+            window.location.href = Routes.edit_user_path(id);
+        });
+        $('.insert-user').click(function(){
+            window.location.href = Routes.new_user_path(id);
+        });
+        $('.delete-user').click(function(){
+            window.location.href =Routes.user_path();
+        })
+    })
 </script>
